@@ -9,7 +9,7 @@ JS的基础类型Number，所有数字（整数，小数）都属于Number，其
 2. 指数位E: 第2-12位
 3. 小数位M: 第13-64位，超出的部分自动进一舍零
    
-![ke](https://github.com/kejiacheng/blog/blob/master/imgs/%E9%97%AD%E5%8C%85/%E5%B9%BB%E7%81%AF%E7%89%871.png)
+![ke](https://github.com/kejiacheng/blog/blob/master/imgs/js%E6%B5%AE%E7%82%B9%E7%B2%BE%E5%BA%A6/1.png)
 
 这时候我们知道了其存储方式，那么我们怎么将一个数字转换成S，E，M存储进去呢？这个转化过程我在阅读网上关于浮点精度的文章中，大部分未提及或者一笔带过，给很多读者带来困惑，那么现在我将以0.1这个数字为例，讲解其转化过程。
 
@@ -18,7 +18,7 @@ JS的基础类型Number，所有数字（整数，小数）都属于Number，其
 2. 将二进制用科学计数法表示(-1) ^ 0 ✖ 1.100110011001100110011001100110011001100110011001101 ✖ 2 ^ (-4)。（注：我们平时看到的科学计数法都是十进制，所以底数为10，因为我们这是二进制，所以底数为2）
 3. 实际值表达公式初版：
    
-![ke](https://github.com/kejiacheng/blog/blob/master/imgs/%E9%97%AD%E5%8C%85/%E5%B9%BB%E7%81%AF%E7%89%871.png)
+![ke](https://github.com/kejiacheng/blog/blob/master/imgs/js%E6%B5%AE%E7%82%B9%E7%B2%BE%E5%BA%A6/2.png)
 
 图中的S，e，m对应科学计数法中的值，得出S = 0，e = -4，m = 1.100110011001100110011001100110011001100110011001101
 
@@ -26,11 +26,11 @@ JS的基础类型Number，所有数字（整数，小数）都属于Number，其
 
 我们知道指数位E在存储空间中占11位，那么通过2 ^ 11可得出最大可存储2048（即0-2047），又因为指数可取负数，因此在[0，1022]指数位负，[1024，2047]指数为正，1023为0。这时候我们可以得到第二版：
 
-![ke](https://github.com/kejiacheng/blog/blob/master/imgs/%E9%97%AD%E5%8C%85/%E5%B9%BB%E7%81%AF%E7%89%871.png)
+![ke](https://github.com/kejiacheng/blog/blob/master/imgs/js%E6%B5%AE%E7%82%B9%E7%B2%BE%E5%BA%A6/3.png)
 
 M是什么呢？公式表达就是M = m - 1，那么整数位1就变成了隐藏位。我们知道JS的最大安全整数是 2 ^ 53 - 1，但是存储的只有52位，这时候就是这隐藏位起的作用，且这隐藏位永远为1。最终版：
 
-![ke](https://github.com/kejiacheng/blog/blob/master/imgs/%E9%97%AD%E5%8C%85/%E5%B9%BB%E7%81%AF%E7%89%871.png)
+![ke](https://github.com/kejiacheng/blog/blob/master/imgs/js%E6%B5%AE%E7%82%B9%E7%B2%BE%E5%BA%A6/4.png)
 
 这时候我们最终获得S，E，M的值
 
@@ -42,11 +42,11 @@ M = 100110011001100110011001100110011001100110011001101
 
 这时候会发现一个问题M的长度已经超过了52位
 
-![ke](https://github.com/kejiacheng/blog/blob/master/imgs/%E9%97%AD%E5%8C%85/%E5%B9%BB%E7%81%AF%E7%89%871.png)
+![ke](https://github.com/kejiacheng/blog/blob/master/imgs/js%E6%B5%AE%E7%82%B9%E7%B2%BE%E5%BA%A6/5.png)
 
 在上面讲存储方式的时候说了小数位M，超出的部分自动进一舍零，所以最终我们得到
 
-![ke](https://github.com/kejiacheng/blog/blob/master/imgs/%E9%97%AD%E5%8C%85/%E5%B9%BB%E7%81%AF%E7%89%871.png)
+![ke](https://github.com/kejiacheng/blog/blob/master/imgs/js%E6%B5%AE%E7%82%B9%E7%B2%BE%E5%BA%A6/6.png)
 
 这里的小数位M自动进一舍零也就是我们平时计算中会得到0.0000000001和0.9999999的原因。
 
