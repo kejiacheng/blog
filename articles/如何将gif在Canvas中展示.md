@@ -4,11 +4,11 @@
 
 原gif图：
 
-![ke](https://github.com/kejiacheng/blog/blob/master/imgs/%E5%89%8D%E7%AB%AF%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/1.png)
+![ke](https://github.com/kejiacheng/blog/blob/master/imgs/%E5%A6%82%E4%BD%95%E5%B0%86gif%E5%9C%A8Canvas%E4%B8%AD%E5%B1%95%E7%A4%BA/1.gif)
 
 drawImage后的图
 
-![ke](https://github.com/kejiacheng/blog/blob/master/imgs/%E5%89%8D%E7%AB%AF%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/1.png)
+![ke](https://github.com/kejiacheng/blog/blob/master/imgs/%E5%A6%82%E4%BD%95%E5%B0%86gif%E5%9C%A8Canvas%E4%B8%AD%E5%B1%95%E7%A4%BA/2.png)
 
 从上述的两张图，我们可以看出用了drawImage后，gif只会在Canvas中显示一帧，那么drawImage很明显不是我们要的答案。
 
